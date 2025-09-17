@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - New Hope School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-placeholder">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="school-info">
+                    <h1>New Hope School</h1>
+                    <p>Discipline, Knowledge, Service</p>
+                </div>
+            </div>
+            <nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="main-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Gallery</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>></span> <span>Gallery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="campus">Campus</button>
+                <button class="filter-btn" data-filter="classroom">Classroom</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="activities">Activities</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <div class="container">
+            <div class="gallery-items">
+                <!-- Campus Images -->
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="School Campus">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>School Campus</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="campus" data-title="School Campus">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="School Building">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>School Building</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="campus" data-title="School Building">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="School Playground">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>School Playground</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="campus" data-title="School Playground">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Classroom Images -->
+                <div class="gallery-item" data-category="classroom">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Classroom Learning">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Classroom Learning</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="classroom" data-title="Classroom Learning">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="classroom">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Science Laboratory">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Science Laboratory</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="classroom" data-title="Science Laboratory">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="classroom">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Computer Lab">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Computer Lab</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="classroom" data-title="Computer Lab">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Events Images -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Graduation Ceremony">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Graduation Ceremony</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="events" data-title="Graduation Ceremony">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Science Fair">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Science Fair</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="events" data-title="Science Fair">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Cultural Day">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Cultural Day</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="events" data-title="Cultural Day">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activities Images -->
+                <div class="gallery-item" data-category="activities">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Art Class">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Art Class</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="activities" data-title="Art Class">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="activities">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Music Class">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Music Class</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="activities" data-title="Music Class">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="activities">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Drama Club">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Drama Club</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="activities" data-title="Drama Club">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sports Images -->
+                <div class="gallery-item" data-category="sports">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Football Match">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Football Match</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="sports" data-title="Football Match">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sports">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Athletics Competition">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Athletics Competition</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="sports" data-title="Athletics Competition">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sports">
+                    <div class="gallery-img-container">
+                        <img src="https://via.placeholder.com/800x600" alt="Basketball Practice">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Basketball Practice</h3>
+                                <a href="https://via.placeholder.com/800x600" class="gallery-view" data-lightbox="sports" data-title="Basketball Practice">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="close-lightbox">&times;</span>
+            <img class="lightbox-img" src="" alt="">
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-school"></i>
+                        <h3>New Hope School</h3>
+                    </div>
+                    <p>Providing quality education with a focus on discipline, knowledge, and service since 2002.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> MVM6+GJJ, Ogbodjo</p>
+                    <p><i class="fas fa-phone"></i> 0244523510</p>
+                    <p><i class="fas fa-envelope"></i> info@newhopeschool</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/newhopeschoolgh?utm_source=ig_web_button_share_sheet&igsh=NWN2MzhzeTN2Ymo="><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 New Hope School. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
