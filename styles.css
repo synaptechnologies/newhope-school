@@ -1711,8 +1711,7 @@ footer {
     border-radius: 3px;
     margin-top: 3px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: auto;
 }
 
 .upcoming-events, .past-events {
@@ -1797,6 +1796,7 @@ footer {
     
     .event-indicator {
         font-size: 0.6rem;
+        max-width: 30px;
     }
 }
 /* Error Page Styles */
