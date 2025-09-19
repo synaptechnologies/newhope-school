@@ -129,6 +129,158 @@ if (document.querySelector('.faq-question')) {
     });
 }
 
+// News Pagination
+if (document.querySelector('.pagination')) {
+    const pageLinks = document.querySelectorAll('.page-link:not(.next)');
+    const nextLink = document.querySelector('.page-link.next');
+    const newsItems = document.querySelectorAll('.news-item');
+    const itemsPerPage = 6; // Number of news items to show per page
+    let currentPage = 1;
+    let totalPages = Math.ceil(newsItems.length / itemsPerPage);
+
+    // Function to show items for the current page
+    function showPage(page) {
+        // Hide all news items
+        newsItems.forEach(item => {
+            item.style.display = 'none';
+        });
+
+        // Calculate start and end indices
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        // Show items for the current page
+        for (let i = startIndex; i < endIndex && i < newsItems.length; i++) {
+            newsItems[i].style.display = 'block';
+        }
+
+        // Update active page link
+        pageLinks.forEach(link => {
+            link.classList.remove('active');
+            if (parseInt(link.textContent) === page) {
+                link.classList.add('active');
+            }
+        });
+
+        // Update next button visibility
+        if (page >= totalPages) {
+            nextLink.style.display = 'none';
+        } else {
+            nextLink.style.display = 'flex';
+        }
+    }
+
+    // Initialize pagination
+    showPage(currentPage);
+
+    // Add click event to page links
+    pageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentPage = parseInt(this.textContent);
+            showPage(currentPage);
+            
+            // Scroll to top of news grid
+            document.querySelector('.news-grid').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Add click event to next button
+    if (nextLink) {
+        nextLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+                
+                // Scroll to top of news grid
+                document.querySelector('.news-grid').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // If there are more than 3 page links, update them dynamically
+    if (totalPages > 3) {
+        function updatePageLinks() {
+            // Hide all page links except the first one and the next button
+            pageLinks.forEach(link => {
+                if (parseInt(link.textContent) !== 1) {
+                    link.style.display = 'none';
+                }
+            });
+
+            // Show current page and adjacent pages
+            for (let i = Math.max(1, currentPage - 1); i <= Math.min(totalPages, currentPage + 1); i++) {
+                pageLinks.forEach(link => {
+                    if (parseInt(link.textContent) === i) {
+                        link.style.display = 'flex';
+                    }
+                });
+            }
+
+            // Always show first page
+            pageLinks[0].style.display = 'flex';
+            
+            // Always show last page if not already shown
+            if (currentPage < totalPages - 1) {
+                pageLinks.forEach(link => {
+                    if (parseInt(link.textContent) === totalPages) {
+                        link.style.display = 'flex';
+                    }
+                });
+            }
+        }
+
+        // Initial update of page links
+        updatePageLinks();
+
+        // Update page links when page changes
+        pageLinks.forEach(link => {
+            link.addEventListener('click', updatePageLinks);
+        });
+
+        if (nextLink) {
+            nextLink.addEventListener('click', updatePageLinks);
+        }
+    }
+}
+
+// News Category Filter (updated to work with pagination)
+if (document.querySelector('.category-btn')) {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const newsItems = document.querySelectorAll('.news-item');
+    const pagination = document.querySelector('.pagination');
+    
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            categoryBtns.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const category = this.getAttribute('data-category');
+            let visibleItems = 0;
+            
+            newsItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    visibleItems++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show or hide pagination based on visible items
+            if (visibleItems <= 6) { // 6 is the items per page
+                pagination.style.display = 'none';
+            } else {
+                pagination.style.display = 'flex';
+            }
+        });
+    });
+}
+
+
 // Tab Functionality
 if (document.querySelector('.tab-btn')) {
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -178,24 +330,20 @@ if (document.getElementById('contactForm')) {
             return;
         }
         
-        // Form data
-        const formData = {
-            name: name,
-            email: email,
-            phone: phone,
-            subject: subject,
-            message: message
-        };
+        // Create email body
+        const emailBody = `Name: ${name}%0D%0A` +
+                         `Email: ${email}%0D%0A` +
+                         `Phone: ${phone}%0D%0A%0D%0A` +
+                         `Message:%0D%0A${message}`;
         
-        // Here you would normally send the data to a server
-        // For this example, we'll just show a success message
-        console.log('Form submitted:', formData);
+        // Create mailto link
+        const mailtoLink = `mailto:info@newhopeschool?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+        
+        // Open mailto link
+        window.location.href = mailtoLink;
         
         // Show success message
-        showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
-        
-        // Reset form
-        contactForm.reset();
+        showFormMessage('Opening your email client. Please send the email to complete your submission.', 'success');
     });
     
     function showFormMessage(message, type) {
@@ -225,11 +373,15 @@ if (document.getElementById('admissionForm')) {
         const gender = document.getElementById('gender').value;
         const gradeApplying = document.getElementById('gradeApplying').value;
         const academicYear = document.getElementById('academicYear').value;
+        const previousSchool = document.getElementById('previousSchool').value;
         const parentName = document.getElementById('parentName').value;
         const relationship = document.getElementById('relationship').value;
         const parentPhone = document.getElementById('parentPhone').value;
         const parentEmail = document.getElementById('parentEmail').value;
         const parentAddress = document.getElementById('parentAddress').value;
+        const hearAbout = document.getElementById('hearAbout').value;
+        const specialNeeds = document.getElementById('specialNeeds').value;
+        const additionalInfo = document.getElementById('additionalInfo').value;
         const declaration = document.getElementById('declaration').checked;
         
         // Simple validation
@@ -246,35 +398,38 @@ if (document.getElementById('admissionForm')) {
             return;
         }
         
-        // Form data
-        const formData = {
-            student: {
-                firstName: firstName,
-                lastName: lastName,
-                dateOfBirth: dateOfBirth,
-                gender: gender,
-                gradeApplying: gradeApplying,
-                academicYear: academicYear
-            },
-            parent: {
-                name: parentName,
-                relationship: relationship,
-                phone: parentPhone,
-                email: parentEmail,
-                address: parentAddress
-            },
-            declaration: declaration
-        };
+        // Create email subject
+        const emailSubject = `Admission Application for ${firstName} ${lastName} - ${gradeApplying}`;
         
-        // Here you would normally send the data to a server
-        // For this example, we'll just show a success message
-        console.log('Application submitted:', formData);
+        // Create email body
+        const emailBody = `STUDENT INFORMATION:%0D%0A` +
+                         `First Name: ${firstName}%0D%0A` +
+                         `Last Name: ${lastName}%0D%0A` +
+                         `Date of Birth: ${dateOfBirth}%0D%0A` +
+                         `Gender: ${gender}%0D%0A` +
+                         `Grade Applying For: ${gradeApplying}%0D%0A` +
+                         `Academic Year: ${academicYear}%0D%0A` +
+                         `Previous School: ${previousSchool}%0D%0A%0D%0A` +
+                         `PARENT/GUARDIAN INFORMATION:%0D%0A` +
+                         `Name: ${parentName}%0D%0A` +
+                         `Relationship: ${relationship}%0D%0A` +
+                         `Phone: ${parentPhone}%0D%0A` +
+                         `Email: ${parentEmail}%0D%0A` +
+                         `Address: ${parentAddress}%0D%0A%0D%0A` +
+                         `ADDITIONAL INFORMATION:%0D%0A` +
+                         `How did you hear about us: ${hearAbout}%0D%0A` +
+                         `Special Needs: ${specialNeeds}%0D%0A` +
+                         `Additional Info: ${additionalInfo}%0D%0A%0D%0A` +
+                         `Declaration: ${declaration ? 'Confirmed' : 'Not confirmed'}`;
+        
+        // Create mailto link
+        const mailtoLink = `mailto:admissions@newhopeschool?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
+        
+        // Open mailto link
+        window.location.href = mailtoLink;
         
         // Show success message
-        showFormMessage('Thank you for your application! We will contact you soon for the next steps.', 'success');
-        
-        // Reset form
-        admissionForm.reset();
+        showFormMessage('Opening your email client. Please send the email to complete your application.', 'success');
     });
     
     function showFormMessage(message, type) {
